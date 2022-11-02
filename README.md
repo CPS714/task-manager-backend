@@ -3,7 +3,7 @@
 # Routes
 |                |Route                       |
 |----------------|-------------------------------|
-|Get all tasks|`GET / api/tasks/`|
+|Get all tasks|`GET /api/tasks/`|
 |Insert new tasks          |`POST /api/tasks/`|
 |Update task       |`PUT / api/tasks/:task_id`|
 
