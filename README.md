@@ -4,7 +4,7 @@
 |                |Route                       |
 |----------------|-------------------------------|
 |Get all tasks|`GET / api/tasks/`|
-|Insert new tasks          |`"POST /api/tasks/"`|
+|Insert new tasks          |`POST /api/tasks/`|
 |Update task       |`PUT / api/tasks/:task_id`|
 
 ###  Example Request Body: POST /api/tasks/
