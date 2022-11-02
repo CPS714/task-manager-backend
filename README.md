@@ -3,9 +3,9 @@
 # Routes
 |                |Route                       |
 |----------------|-------------------------------|
-|Get all tasks|`'GET / api/tasks/`|
+|Get all tasks|`GET / api/tasks/`|
 |Insert new tasks          |`"POST /api/tasks/"`|
-|Update task       |`'PUT / api/tasks/:task_id`|
+|Update task       |`PUT / api/tasks/:task_id`|
 
 ###  Example Request Body: POST /api/tasks/
 ```
@@ -29,7 +29,6 @@
 ```
 
 ###  Example Response: GET /api/tasks/
-> **Note:** You only need to add the key, value pairs for the fields you wish to update for the requested task id.
 ```
 [
 	{
