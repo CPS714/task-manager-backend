@@ -3,10 +3,9 @@ const Joi = require('joi');
 const schemas = {
     createTasks: Joi.array().items(
         Joi.object({
-            id: Joi.number().required(),
             name: Joi.string().required(),
             description: Joi.string(),
-            priority: Joi.string(),
+            priority: Joi.number(),
             schedule_date: Joi.string(),
             created_on: Joi.string(),
         })

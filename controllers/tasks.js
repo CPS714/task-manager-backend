@@ -7,7 +7,7 @@ const createTasks = async (req, res) => {
     try {
         await db.insertTasks(req.body);
 
-        res.status(200);
+        res.status(200).send({code: 200});
     } catch(err) {
         console.log('Encountered error creating tasks', err)
 
