@@ -3,6 +3,7 @@
 # Start API Server
  ```
 npm i
+npm i -g --force nodemon
 nodemon app.js
 ```
 
