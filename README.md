@@ -1,5 +1,11 @@
 # Task Manager API
 
+# Start API Server
+ ```
+npm i
+nodemon app.js
+```
+
 # Routes
 |                |Route                       |
 |----------------|-------------------------------|
