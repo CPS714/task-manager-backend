@@ -4,6 +4,7 @@ const schemas = {
     createTasks: Joi.array().items(
         Joi.object({
             name: Joi.string().required(),
+            is_completed: Joi.boolean().required(),
             description: Joi.string(),
             priority: Joi.number(),
             schedule_date: Joi.string(),
