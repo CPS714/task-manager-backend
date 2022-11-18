@@ -48,8 +48,25 @@ const updateTasks = async (req, res) => {
     }
 }
 
+const deleteTasks = async (req, res) => {
+    try {
+        const {task_id} = req.params;
+
+        const task = await db.deleteTask(task_id);
+
+        await db.updateTask(task_id, req.body);
+
+        res.status(200).send();
+    } catch (err) {
+        console.log('Encountered error updating tasks', err);
+
+        res.status(500).send('server_error')
+    }
+}
+
 module.exports = {
     createTasks,
     getTasks,
     updateTasks,
+    deleteTasks,
 }

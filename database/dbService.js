@@ -12,7 +12,7 @@ const instance = null;
 const connection = new PostgresPool({
     host: 'localhost',
     user : 'postgres',
-    password : 'password',
+    password : 'shant10',
     database : 'postgres',
     port : '5432'
 });
@@ -107,6 +107,28 @@ class DbService {
             console.log(error);
         }
     }
+
+    async deleteTask(id){
+        try{
+            const response = await new Promise((resolve, reject) => {
+                const query = `DELETE FROM tasks WHERE id = $1;`
+                connection.query(query, [id], (error, result) => {
+                    if(error){
+                        reject(error);
+                    }
+                    else{
+                        resolve(result);
+                    }
+                })
+            })
+            return response;
+        }
+        catch(error){
+            throw error;
+        }
+    }
+
+    
 
 
 }
