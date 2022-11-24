@@ -12,7 +12,7 @@ const instance = null;
 const connection = new PostgresPool({
     host: 'localhost',
     user : 'postgres',
-    password : 'shant10',
+    password : 'password',
     database : 'postgres',
     port : '5432'
 });
@@ -25,11 +25,11 @@ class DbService {
 
     async insertTasks(props){
         props.forEach(async(prop) => {
-            const {name, is_completed, description, priority, schedule_date} = prop;
+            const {name, is_completed, description, priority, schedule_date, email} = prop;
             try{
                 const insertId = await new Promise((resolve, reject) => {
-                    const query = 'INSERT INTO tasks (name, is_completed, description, priority, schedule_date, created_on) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *';
-                    connection.query(query, [name, is_completed, description, priority, schedule_date, new Date()], (error, result) => {
+                    const query = 'INSERT INTO tasks (name, is_completed, description, priority, schedule_date, email, created_on) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *';
+                    connection.query(query, [name, is_completed, description, priority, schedule_date, email, new Date()], (error, result) => {
                         if(error){
                             reject(new Error(error.message));
                         }
@@ -46,11 +46,11 @@ class DbService {
         });
     }
 
-    async getTasks(){
+    async getTasks(email){
         try{
             const response = await new Promise((resolve, reject) => {
-                const query = "SELECT * FROM tasks;"
-                connection.query(query, (error, result) => {
+                const query = "SELECT * FROM tasks WHERE email = $1 ;"
+                connection.query(query, [email], (error, result) => {
                     if(error){
                         reject(error);
                     }

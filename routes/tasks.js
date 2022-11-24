@@ -6,7 +6,7 @@ const {verifyTasks} = require('../middleware/verifyRequestSchema')
 const router = express.Router();
 
 // GET /api/tasks
-router.get('/', getTasks)
+router.get('/user/:email', getTasks)
 
 // POST /api/tasks
 router.post('/', verifyTasks, createTasks)

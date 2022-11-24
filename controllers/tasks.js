@@ -16,10 +16,11 @@ const createTasks = async (req, res) => {
     }
 }
 
-const getTasks = async (_req, res) => {
+const getTasks = async (req, res) => {
+    console.log(req)
     try {
-        const tasks = await db.getTasks();
-
+        const {email} = req.params;
+        const tasks = await db.getTasks(email);
         return res.status(200).json(tasks.rows);
     } catch(err) {
         console.log('Encountered error getting tasks', err)
@@ -30,15 +31,20 @@ const getTasks = async (_req, res) => {
 
 const updateTasks = async (req, res) => {
     try {
+        console.log("BEFORE GE TASKS")
         const {task_id} = req.params;
 
         const task = await db.getTask(task_id);
+        console.log(task)
 
         // TODO: We should different error codes. Right now we throw 500 for everything
         if (task.rows.length === 0)
             throw Error(`Unable to find task id ${task_id}`)
 
+        console.log("PDAE TASKS")
+        console.log(req.body)
         await db.updateTask(task_id, req.body);
+        console.log("FTER UPDAT TASKS")
 
         res.status(200).send();
     } catch (err) {
@@ -56,7 +62,7 @@ const deleteTasks = async (req, res) => {
 
         await db.updateTask(task_id, req.body);
 
-        res.status(200).send();
+        res.status(200).send({code: 200});
     } catch (err) {
         console.log('Encountered error updating tasks', err);
 
