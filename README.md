@@ -64,12 +64,12 @@ Download Postgres Version 15.1 here: https://www.enterprisedb.com/downloads/post
 ```
 CREATE TABLE tasks (
 	id serial PRIMARY KEY,
-	name VARCHAR (255) NOT NULL,
-	is_completed boolean NOT NULL,
-	description VARCHAR (255),
+	name VARCHAR ( 255 ) NOT NULL,
+	email VARCHAR (255) NOT NULL,
+	is_completed BOOLEAN NOT NULL,
+	description VARCHAR ( 255 ) NOT NULL,
 	priority INT NOT NULL,
-	schedule_date TIMESTAMP NOT NULL,
-	email VARCHAR(255) NOT NULL,
+	schedule_date TIMESTAMP,
 	created_on TIMESTAMP NOT NULL
 );
 ```
