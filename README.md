@@ -69,6 +69,7 @@ CREATE TABLE tasks (
 	description VARCHAR (255),
 	priority INT NOT NULL,
 	schedule_date TIMESTAMP NOT NULL,
+	email VARCHAR(255) NOT NULL,
 	created_on TIMESTAMP NOT NULL
 );
 ```
