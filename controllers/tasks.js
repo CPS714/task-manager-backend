@@ -1,5 +1,4 @@
 const dbService = require('../database/dbService');
-const { sendEmail } = require('../lib/email');
 
 const db = dbService.getDbServiceInstance();
 
