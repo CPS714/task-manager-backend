@@ -8,8 +8,8 @@ const schemas = {
             description: Joi.string(),
             priority: Joi.number(),
             schedule_date: Joi.string(),
-            email: Joi.string(),
             created_on: Joi.string(),
+            categories: Joi.array().items(Joi.string())
         })
     )
 };

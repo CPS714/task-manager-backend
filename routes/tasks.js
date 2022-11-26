@@ -9,7 +9,7 @@ const router = express.Router();
 router.get('/user/:email', getTasks)
 
 // POST /api/tasks
-router.post('/', verifyTasks, createTasks)
+router.post('/user/:email', verifyTasks, createTasks)
 
 // PUT /api/tasks/:task_id
 router.put('/:task_id', updateTasks)

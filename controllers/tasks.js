@@ -1,11 +1,15 @@
 const dbService = require('../database/dbService');
+const { sendEmail } = require('../lib/email');
 
 const db = dbService.getDbServiceInstance();
 
 
 const createTasks = async (req, res) => {
     try {
-        await db.insertTasks(req.body);
+        const {email} = req.params;
+
+        await db.insertTasks(req.body, email);
+
 
         res.status(200).send({code: 200});
     } catch(err) {

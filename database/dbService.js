@@ -23,13 +23,16 @@ class DbService {
         return instance ? instance : new DbService();
     }
 
-    async insertTasks(props){
-        props.forEach(async(prop) => {
-            const {name, is_completed, description, priority, schedule_date, email} = prop;
+    async insertTasks(tasks, email){
+        tasks.forEach(async(prop) => {
+            const {name, is_completed, description, priority, schedule_date, categories} = prop;
+
+            const formattedCategories = categories.join();
+
             try{
                 const insertId = await new Promise((resolve, reject) => {
-                    const query = 'INSERT INTO tasks (name, is_completed, description, priority, schedule_date, email, created_on) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *';
-                    connection.query(query, [name, is_completed, description, priority, schedule_date, email, new Date()], (error, result) => {
+                    const query = 'INSERT INTO tasks (name, is_completed, description, priority, schedule_date, email, created_on, categories) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *';
+                    connection.query(query, [name, is_completed, description, priority, schedule_date, email, new Date(), formattedCategories], (error, result) => {
                         if(error){
                             reject(new Error(error.message));
                         }
