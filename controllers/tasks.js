@@ -24,7 +24,21 @@ const getTasks = async (req, res) => {
     try {
         const {email} = req.params;
         const tasks = await db.getTasks(email);
-        return res.status(200).json(tasks.rows);
+
+        const resp = tasks.rows?.map((task) => {
+            return {
+                id: task.id,
+                name: task.name,
+                email: task.email,
+                is_completed: task.is_completed,
+                description: task.description,
+                priority: task.priority,
+                schedule_date: task.schedule_date,
+                created_on: task.created_on,
+                categories: task.categories.split(',')
+            }
+        })
+        return res.status(200).json(resp);
     } catch(err) {
         console.log('Encountered error getting tasks', err)
 
