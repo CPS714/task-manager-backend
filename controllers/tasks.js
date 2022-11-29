@@ -7,6 +7,7 @@ const createTasks = async (req, res) => {
     try {
         const {email} = req.params;
 
+
         await db.insertTasks(req.body, email);
 
 
@@ -20,7 +21,6 @@ const createTasks = async (req, res) => {
 }
 
 const getTasks = async (req, res) => {
-    console.log(req)
     try {
         const {email} = req.params;
         const tasks = await db.getTasks(email);
@@ -35,7 +35,7 @@ const getTasks = async (req, res) => {
                 priority: task.priority,
                 schedule_date: task.schedule_date,
                 created_on: task.created_on,
-                categories: task.categories.split(',')
+                categories: task.categories?.split(',')
             }
         })
         return res.status(200).json(resp);

@@ -27,7 +27,7 @@ class DbService {
         tasks.forEach(async(prop) => {
             const {name, is_completed, description, priority, schedule_date, categories} = prop;
 
-            const formattedCategories = categories.join();
+            const formattedCategories = categories?.join();
 
             try{
                 const insertId = await new Promise((resolve, reject) => {

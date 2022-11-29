@@ -18,6 +18,8 @@ const schemas = {
 const verifyTasks = async(req, res, next) => {
     const validation = schemas.createTasks.validate(req.body);
 
+    console.log(validation)
+
     if(validation.error)
         return res.status(400).send({code: 400, error: 'invalid_request_error'});
 
