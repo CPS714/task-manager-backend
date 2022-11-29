@@ -66,6 +66,7 @@ CREATE TABLE tasks (
 	id serial PRIMARY KEY,
 	name VARCHAR ( 255 ) NOT NULL,
 	email VARCHAR (255) NOT NULL,
+	categories VARCHAR (255),
 	is_completed BOOLEAN NOT NULL,
 	description VARCHAR ( 255 ) NOT NULL,
 	priority INT NOT NULL,
