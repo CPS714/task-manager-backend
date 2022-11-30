@@ -58,10 +58,12 @@ const updateTasks = async (req, res) => {
         if (task.rows.length === 0)
             throw Error(`Unable to find task id ${task_id}`)
 
-        console.log("PDAE TASKS")
         console.log(req.body)
-        await db.updateTask(task_id, req.body);
-        console.log("FTER UPDAT TASKS")
+
+        const {categories} = req.body
+
+
+        await db.updateTask(task_id, {...req.body, categories: categories?.join()});
 
         res.status(200).send();
     } catch (err) {
